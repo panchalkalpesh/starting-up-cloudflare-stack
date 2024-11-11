@@ -35,8 +35,8 @@ binding = "AI"
 # [[analytics_engine_datasets]]
 # binding = "MY_DATASET"
 
-[assets]
-directory = "./public"
+# [assets]
+# directory = "./public"
 
 # Bind a headless browser instance running on Cloudflare's global network.
 # Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#browser-rendering

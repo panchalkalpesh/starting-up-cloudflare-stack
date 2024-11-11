@@ -2,7 +2,7 @@
 
 - [ ] 🤔 You probably already know us
 - [ ] 💭 Probably?
-- [ ] 🧰 Cloudflare Stack
+- [ ] 🧰 The Cloudflare Stack
   - [ ] Compute
     - [ ] Workers
     - [ ] Pages
@@ -23,4 +23,7 @@
     - [ ] Vectorize
     - [ ] AI Gateway
 - [ ] 🆕 Getting Started
-  - [ ] `npm create cloudflare@latest`
+  - [ ] npm create cloudflare@latest
+- [ ] 🛠️ Build
+- [ ] 🚀 Deploy
+- [ ] 🧑‍💻👩‍💻 Share - https://shrty.dev/starting-up
