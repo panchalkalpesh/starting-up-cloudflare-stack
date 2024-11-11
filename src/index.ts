@@ -1,18 +1,31 @@
-/**
- * Welcome to Cloudflare Workers! This is your first worker.
- *
- * - Run `npm run dev` in your terminal to start a development server
- * - Open a browser tab at http://localhost:8787/ to see your worker in action
- * - Run `npm run deploy` to publish your worker
- *
- * Bind resources to your worker in `wrangler.toml`. After adding bindings, a type definition for the
- * `Env` object can be regenerated with `npm run cf-typegen`.
- *
- * Learn more at https://developers.cloudflare.com/workers/
- */
+import { Hono } from 'hono';
+import { ProductGathererWorkflow } from './product-gatherer';
 
-export default {
-	async fetch(request, env, ctx): Promise<Response> {
-		return new Response('Hello World!');
-	},
-} satisfies ExportedHandler<Env>;
+export { ProductGathererWorkflow };
+
+const app = new Hono<{ Bindings: Env }>();
+
+app.get('/api/cards', async (c) => {
+	const { results } = await c.env.DB.prepare(`SELECT * FROM flash_cards ORDER BY title`).all();
+	return c.json(results);
+});
+
+app.get('api/cards/search', async (c) => {
+	const query = c.req.query('q');
+	// Encode query
+	// @ts-ignore
+	const embeddings = await c.env.AI.run('@cf/baai/bge-large-en-v1.5', {
+		text: query,
+	});
+	const results = await c.env.VECTORIZE.query(embeddings.data[0], { returnMetadata: true });
+	// Search by similarity
+	return c.json({ results });
+});
+
+app.get('/api/cards/:slug/svg', async (c) => {
+	const slug = c.req.param('slug');
+	const result = await c.env.SVG.get(slug);
+	return c.json({ result });
+});
+
+export default app;

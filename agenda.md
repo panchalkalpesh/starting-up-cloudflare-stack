@@ -1,0 +1,25 @@
+# Starting Up
+
+- [ ] 🤔 You probably already know us
+- [ ] 💭 Probably?
+- [ ] 🧰 Cloudflare Stack
+  - [ ] Compute
+    - [ ] Workers
+    - [ ] Pages
+    - [ ] Queues
+    - [ ] Workflows
+  - [ ] Data
+    - [ ] KV
+    - [ ] R2
+    - [ ] D1
+    - [ ] HyperDrive
+    - [ ] Durable Objects
+  - [ ] Media
+    - [ ] Images
+    - [ ] Stream
+    - [ ] Calls
+  - [ ] AI
+    - [ ] Workers AI
+    - [ ] Vectorize
+    - [ ] AI Gateway
+- [ ] 🆕 Getting Started
