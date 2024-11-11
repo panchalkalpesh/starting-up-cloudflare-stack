@@ -23,3 +23,4 @@
     - [ ] Vectorize
     - [ ] AI Gateway
 - [ ] 🆕 Getting Started
+  - [ ] `npm create cloudflare@latest`
