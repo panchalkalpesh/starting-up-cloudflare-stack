@@ -32,7 +32,14 @@ function createCardElement(card) {
     fetch(`/api/cards/${card.slug}/svg`)
         .then(response => response.json())
         .then(data => {
-            imageContainer.innerHTML = data.result; // Access SVG with the 'result' key
+            imageContainer.innerHTML = data.result;
+
+            // Apply styling to the SVG to make it slightly smaller
+            const svg = imageContainer.querySelector('svg');
+            if (svg) {
+                svg.style.width = '60%'; // Dialed down to about 60%
+                svg.style.height = '60%';
+            }
         })
         .catch(error => console.error('Error loading SVG:', error));
 
