@@ -1,29 +1,29 @@
 # Starting Up
 
-- [ ] 🤔 You probably already know us
-- [ ] 💭 Probably?
-- [ ] 🧰 The Cloudflare Stack
-  - [ ] Compute
-    - [ ] Workers
-    - [ ] Pages
-    - [ ] Queues
-    - [ ] Workflows
-  - [ ] Data
-    - [ ] KV
-    - [ ] R2
-    - [ ] D1
-    - [ ] HyperDrive
-    - [ ] Durable Objects
-  - [ ] Media
-    - [ ] Images
-    - [ ] Stream
-    - [ ] Calls
-  - [ ] AI
-    - [ ] Workers AI
-    - [ ] Vectorize
-    - [ ] AI Gateway
-- [ ] 🆕 Getting Started
-  - [ ] npm create cloudflare@latest
-- [ ] 🛠️ Build
-- [ ] 🚀 Deploy
+- [x] 🤔 You probably already know us
+- [x] 💭 Probably?
+- [x] 🧰 The Cloudflare Stack
+  - [x] Compute
+    - [x] Workers
+    - [x] Pages
+    - [x] Queues
+    - [x] Workflows
+  - [x] Data
+    - [x] KV
+    - [x] R2
+    - [x] D1
+    - [x] HyperDrive
+    - [x] Durable Objects
+  - [x] Media
+    - [x] Images
+    - [x] Stream
+    - [x] Calls
+  - [x] AI
+    - [x] Workers AI
+    - [x] Vectorize
+    - [x] AI Gateway
+- [x] 🆕 Getting Started
+  - [x] npm create cloudflare@latest
+- [x] 🛠️ Build
+- [x] 🚀 Deploy
 - [ ] 🧑‍💻👩‍💻 Share - https://shrty.dev/starting-up
