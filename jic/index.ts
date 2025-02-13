@@ -5,11 +5,18 @@ export { ProductGathererWorkflow };
 
 const app = new Hono<{ Bindings: Env }>();
 
-app.get('/api/cards', async (c) => {
-	const { results } = await c.env.DB.prepare(`SELECT * FROM flash_cards ORDER BY title`).all();
+// TODO: /api/cards from D1
+app.get("/api/cards", async(c) => {
+	const {results} = await c.env.DB.prepare("SELECT * FROM flash_cards ORDER BY title").all();
 	return c.json(results);
-});
-
+})
+// TODO: /api/cards/SLUG/svg from KV
+app.get("/api/cards/:slug/svg", async(c) => {
+	const slug = c.req.param("slug");
+	const svgHTML = await c.env.SVG.get(slug);
+	return c.json({result: svgHTML});
+})
+// TODO: /api/cards/search?q= from Vectorize
 app.get('api/cards/search', async (c) => {
 	const query = c.req.query('q');
 	// Encode query
@@ -22,10 +29,5 @@ app.get('api/cards/search', async (c) => {
 	return c.json({ results });
 });
 
-app.get('/api/cards/:slug/svg', async (c) => {
-	const slug = c.req.param('slug');
-	const result = await c.env.SVG.get(slug);
-	return c.json({ result });
-});
 
 export default app;

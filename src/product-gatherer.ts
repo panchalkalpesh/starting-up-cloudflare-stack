@@ -1,3 +1,5 @@
+/// <reference lib="dom" />
+
 import { WorkflowEntrypoint, WorkflowEvent, WorkflowStep } from 'cloudflare:workers';
 import puppeteer from '@cloudflare/puppeteer';
 
@@ -13,14 +15,15 @@ export class ProductGathererWorkflow extends WorkflowEntrypoint<Env, Params> {
 			const browser = await puppeteer.launch(this.env.BROWSER);
 			const page = await browser.newPage();
 			await page.goto(`https://developers.cloudflare.com/products/?product-group=Developer+platform`);
-			const handles = await page.$$('.sl-link-card a');
+			const handles = await page.$$('a.block');
 			const links: Array<Link> = [];
 			for (const handle of handles) {
 				if (!(await handle.isVisible())) {
 					continue;
 				}
-				const link = await handle.evaluate((el) => {
-					const title = el.textContent.trim() as string;
+				const link = await handle.evaluate((el: HTMLAnchorElement) => {
+					const span = el.querySelector("span.text-md") as HTMLSpanElement;
+					const title = span.textContent?.trim() as string;
 					return {
 						title,
 						slug: title.toLowerCase().replaceAll(' ', '-').replaceAll('/', '-'),
