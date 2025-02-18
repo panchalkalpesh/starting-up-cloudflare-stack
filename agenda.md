@@ -1,4 +1,4 @@
-# Starting Up
+# Starting Up w/ the Cloudflare Stack
 
 - [ ] 🤔 You probably already know us
 - [ ] 💭 Probably?
@@ -13,11 +13,11 @@
     - [ ] R2
     - [ ] D1
     - [ ] HyperDrive
-    - [ ] Durable Objects
+    - [ ] Durable Objects 👆⁉️
   - [ ] Media
     - [ ] Images
     - [ ] Stream
-    - [ ] Calls
+    - [ ] Calls / Realtime
   - [ ] AI
     - [ ] Workers AI
     - [ ] Vectorize

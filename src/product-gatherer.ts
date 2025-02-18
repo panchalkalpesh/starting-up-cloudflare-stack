@@ -61,7 +61,7 @@ export class ProductGathererWorkflow extends WorkflowEntrypoint<Env, Params> {
 				await page.goto(link.href);
 				// First one in there
 				const sloganHandle = await page.$('.sl-markdown-content p');
-				const slogan = await sloganHandle?.evaluate((el) => el.textContent.trim());
+				const slogan = await sloganHandle?.evaluate((el) => el.textContent?.trim());
 				const svgHandle = await page.$('.sidebar-pane svg');
 				const svgHTML = await svgHandle?.evaluate((el) => el.outerHTML);
 				await page.close();
@@ -78,12 +78,12 @@ export class ProductGathererWorkflow extends WorkflowEntrypoint<Env, Params> {
 				return true;
 			});
 			const stored = await step.do(`Storing SVG for ${link.title}`, async () => {
-				const response = await this.env.SVG.put(link.slug, svgHTML);
+				const response = await this.env.SVG.put(link.slug, svgHTML as string);
 				return response;
 			});
 			const embeddings = await step.do(`Creating embeddings for ${link.title}`, async() => {
 				const results = await this.env.AI.run("@cf/baai/bge-large-en-v1.5", {
-					text: slogan
+					text: slogan as string
 				});
 				return results.data[0];
 			});
@@ -93,7 +93,7 @@ export class ProductGathererWorkflow extends WorkflowEntrypoint<Env, Params> {
 						id: link.slug,
 						values: embeddings,
 						metadata: {
-							text: slogan,
+							text: slogan as string,
 							url: link.href
 						}
 					}
